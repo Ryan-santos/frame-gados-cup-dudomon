@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>barra de times</title>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <div class="div-pai"><span class="triangulo-time-left-1"></span><div class="conteudo"><h1 id="nomeTime1" class="nome-time"><!-- Nome time lado left --></h1><h2 id="vitoriasTime1" class="vitorias nun-vitoria"><!-- Numerro de vitorias --></h2></div><span class="triangulo-time-left-2"></span></div>
+            <div class="espaco"><span class="triangulo-meio-1"></span><div class="conteudo"><h1 id="tipoPartida" class="nome-time"><!-- Tipo de Partida --></h1></div><span class="triangulo-meio-2"></span></div>
+            <div class="div-pai"><span class="triangulo-time-right-1"></span><div class="conteudo"><h2 id="vitoriasTime2" class="vitorias nun-vitoria"><!-- Numerro de vitorias --></h2><h1 id="nomeTime2" class="nome-time"><!-- Nome time lado right --></h1></div><span class="triangulo-time-right-2"></span></div>
+        </div>
+    </section>
+    <script>
+        async function fetchDadosSubWars() {
+            try {
+                const response = await fetch('https://dados-times-frame-dudomon.herokuapp.com/')
+                const dados = await response.json()
+                imprimir(dados)
+            } catch (error) {
+            console.log(error)
+            }
+        }
+        fetchDadosSubWars()
+
+        function imprimir(dados) {
+            let dadosTime1 = dados[1]
+            let nomeTime1 = document.querySelector('#nomeTime1');
+            nomeTime1.innerHTML = dadosTime1[0]
+            let vitoriasTime1 = document.querySelector('#vitoriasTime1');
+            if(dadosTime1[1] == null){
+                vitoriasTime1.innerHTML = ""
+            }else{
+                vitoriasTime1.innerHTML = dadosTime1[1]
+            }
+
+            let dadosTime2 = dados[2]
+            let nomeTime2 = document.querySelector('#nomeTime2');
+            nomeTime2.innerHTML = dadosTime2[0]
+            let vitoriasTime2 = document.querySelector('#vitoriasTime2');
+            if(dadosTime2[1] == null){
+                vitoriasTime2.innerHTML = ""
+            }else{
+                vitoriasTime2.innerHTML = dadosTime2[1]
+            }
+
+            let semVitorias = document.querySelectorAll('.vitorias');
+            let conteudoCenter = document.querySelectorAll('.conteudo');
+            if(dadosTime1[1] == null || dadosTime2[1] == null){
+                semVitorias.forEach((item) => item.classList.remove('nun-vitoria'));
+                conteudoCenter.forEach((item) => item.classList.add('conteudoCenter'));
+            }else{
+                semVitorias.forEach((item) => item.classList.add('nun-vitoria'));
+                conteudoCenter.forEach((item) => item.classList.remove('conteudoCenter')); 
+            }
+
+            let dadosTipoDepartida = dados[0]
+            let tipoDePartida = document.querySelector('#tipoPartida');
+            tipoDePartida.innerHTML = dadosTipoDepartida[0]
+        }
+
+        let recarregamento = setInterval(fetchDadosSubWars, 30000);
+    </script>
+</body>
+</html>

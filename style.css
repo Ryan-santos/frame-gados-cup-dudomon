@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700&display=swap');
+
+html, body{
+background: transparent;
+font: 700 10px 'Archivo', sans-serif;
+color: #000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    margin: 100px 0 -2px 0;
+    border: 1px solid #eeeeee;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.div-pai,
+.espaco {
+    background: #eeeeee;
+    width: 210px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.triangulo-time-left-1,
+.triangulo-meio-1,
+.triangulo-meio-2,
+.triangulo-time-right-2  {
+    position: relative;
+    right: 25px;
+    width: 0; 
+    height: 0; 
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #eeeeee;
+}
+
+.triangulo-time-left-2,
+.triangulo-time-right-1  {
+    position: relative;
+    left: 25px;
+    width: 0; 
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid #eeeeee;
+}
+
+.triangulo-meio-2 {
+    right: -25px; 
+}
+
+.triangulo-time-right-1 {
+    left: -25px;
+}
+
+.triangulo-time-right-2 {
+    right: -25px; 
+}
+
+.conteudo {
+    width: 200px;
+    margin: 0 -100px;
+    display: flex;
+    justify-content:  space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.conteudoCenter {
+    justify-content:  center;
+}
+
+.nun-vitoria {
+    padding: 1px 5px;
+    background: #ffd11d;
+    border-radius: 4px;
+}
+
+.espaco {
+    width: 60px;
+    margin: 0px 25px;
+    background: #eeeeee;
+    transform: translateY(25px);
+}
+
+.espaco .conteudo  {
+    justify-content: center
+}
